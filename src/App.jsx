@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, FlatList, Animated, PanResponder } from 'react-native';
+import { StyleSheet } from 'react-native-web';
 
 const ListItem = ({ item, onRemove }) => {
   const pan = useState(new Animated.ValueXY())[0];
@@ -18,12 +19,10 @@ const ListItem = ({ item, onRemove }) => {
 
   return (
     <Animated.View
-      style={{
-        transform: [{ translateX: pan.x }],
-      }}
+      style={{ transform: [{ translateX: pan.x }] }}
       {...panResponder.panHandlers}
     >
-      <View style={{ padding: 20, backgroundColor: '#f0f0f0', marginVertical: 5 }}>
+      <View style={styles.item}>
         <Text>{item.value}</Text>
       </View>
     </Animated.View>
@@ -31,15 +30,14 @@ const ListItem = ({ item, onRemove }) => {
 };
 
 const App = () => {
-  const [topInputValue, setTopInputValue] = useState('');
+  const [maxQoute, setMaxQoute] = useState('');
   const [bottomInputValue, setBottomInputValue] = useState('');
   const [list, setList] = useState([]);
 
   const handleTopSubmit = () => {
-    if (topInputValue) {
-      // Process the top input value here
-      console.log('Top input submitted:', topInputValue);
-      setTopInputValue('');
+    if (maxQoute) {
+      console.log('Top input submitted:', maxQoute);
+      setMaxQoute('');
     }
   };
 
@@ -55,12 +53,12 @@ const App = () => {
   };
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
-      <View style={{ flexDirection: 'row', marginBottom: 20 }}>
+    <View style={styles.styles}>
+      <View style={styles.maxQouteView}>
         <TextInput
-          style={{ flex: 1, borderWidth: 1, padding: 10, marginRight: 10 }}
-          value={topInputValue}
-          onChangeText={setTopInputValue}
+          style={styles.edit}
+          value={maxQoute}
+          onChangeText={setMaxQoute}
           keyboardType="numeric"
           placeholder="Enter number"
         />
@@ -71,12 +69,12 @@ const App = () => {
         data={list}
         renderItem={({ item }) => <ListItem item={item} onRemove={removeItem} />}
         keyExtractor={item => item.id}
-        style={{ flex: 1 }}
+        style={styles.itemList}
       />
 
-      <View style={{ flexDirection: 'row', marginTop: 20 }}>
+      <View style={styles.addItemView}>
         <TextInput
-          style={{ flex: 1, borderWidth: 1, padding: 10, marginRight: 10 }}
+          style={styles.edit}
           value={bottomInputValue}
           onChangeText={setBottomInputValue}
           keyboardType="numeric"
@@ -84,8 +82,18 @@ const App = () => {
         />
         <Button title="Add" onPress={handleBottomSubmit} />
       </View>
+
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  mainView: { flex: 1, padding: 20 },
+  maxQouteView: { flexDirection: 'row', marginBottom: 20 },
+  edit: { flex: 1, borderWidth: 1, padding: 10, marginRight: 10 },
+  itemList: { flex: 1 },
+  item: { padding: 20, backgroundColor: '#f0f0f0', marginVertical: 5 },
+  addItemView: { flexDirection: 'row', marginTop: 20 },
+});
 
 export default App;
