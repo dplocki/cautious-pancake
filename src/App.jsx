@@ -34,12 +34,18 @@ const App = () => {
   const [bottomInputValue, setBottomInputValue] = useState('');
   const [list, setList] = useState([]);
 
-  const handleTopSubmit = () => {
+  const handleMaxQouteSetup = () => {
     if (maxQoute) {
       console.log('Top input submitted:', maxQoute);
       setMaxQoute('');
     }
   };
+
+  const handleMaxQouteClear = () => {
+    if (!maxQoute) {
+      maxQoute = '';
+    }
+  }
 
   const handleBottomSubmit = () => {
     if (bottomInputValue) {
@@ -62,7 +68,8 @@ const App = () => {
           keyboardType="numeric"
           placeholder="Enter number"
         />
-        <Button title="Submit" onPress={handleTopSubmit} />
+        <Button title="Submit" onPress={handleMaxQouteSetup} />
+        <Button title='Clear' onPress={handleMaxQouteClear} />
       </View>
 
       <FlatList
