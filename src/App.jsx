@@ -43,7 +43,7 @@ const App = () => {
 
   const handleMaxQouteClear = () => {
     if (!maxQoute) {
-      maxQoute = '';
+      setMaxQoute('');
     }
   }
 
