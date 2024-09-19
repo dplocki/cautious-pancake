@@ -69,7 +69,7 @@ const App = () => {
           placeholder="Enter number"
         />
         <Button title="Submit" onPress={handleMaxQouteSetup} />
-        <Button title='Clear' onPress={handleMaxQouteClear} />
+        <Button title="Clear" onPress={handleMaxQouteClear} />
       </View>
 
       <FlatList
