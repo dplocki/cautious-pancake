@@ -1,44 +1,7 @@
 import { useState } from 'react';
-import { View, Text, TextInput, Button, FlatList, Animated, PanResponder } from 'react-native';
-import PropTypes from 'prop-types';
-
-const ListItem = ({ item, onRemove }) => {
-  const pan = useState(new Animated.ValueXY())[0];
-
-  const panResponder = PanResponder.create({
-    onMoveShouldSetPanResponder: () => true,
-    onPanResponderMove: Animated.event([null, { dx: pan.x }], { useNativeDriver: false }),
-    onPanResponderRelease: (e, gestureState) => {
-      if (Math.abs(gestureState.dx) > 120) {
-        onRemove(item.id);
-      } else {
-        Animated.spring(pan, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
-      }
-    },
-  });
-
-  return (
-    <Animated.View
-      style={{ transform: [{ translateX: pan.x }] }}
-      {...panResponder.panHandlers}
-    >
-      <View style={styles.item}>
-        <Text>{item.value}</Text>
-      </View>
-    </Animated.View>
-  );
-};
-
-ListItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    value: PropTypes.any.isRequired, // Adjust type as per the expected data type (e.g., PropTypes.string)
-  }).isRequired,
-  panResponder: PropTypes.object.isRequired,
-  onRemove: PropTypes.func.isRequired,
-  pan: PropTypes.object.isRequired,
-  styles: PropTypes.object.isRequired,
-};
+import { View, TextInput, Button, FlatList } from 'react-native';
+import styles from './styles';
+import ListItem from './ListItem';
 
 const App = () => {
   const [maxQoute, setMaxQoute] = useState('');
@@ -104,14 +67,5 @@ const App = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  mainView: { flex: 1, padding: 20, innerWidth: '100%' },
-  maxQouteView: { flexDirection: 'row', marginBottom: 20 },
-  edit: { flex: 1, borderWidth: 1, padding: 10 },
-  itemList: { flex: 1 },
-  item: { padding: 20, backgroundColor: '#f0f0f0', marginVertical: 5 },
-  addItemView: { flexDirection: 'row', marginTop: 20 },
-});
 
 export default App;
