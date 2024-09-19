@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TextInput, Button, FlatList, Animated, PanResponder } from 'react-native';
-import { StyleSheet } from 'react-native-web';
+import PropTypes from 'prop-types';
 
 const ListItem = ({ item, onRemove }) => {
   const pan = useState(new Animated.ValueXY())[0];
@@ -27,6 +27,17 @@ const ListItem = ({ item, onRemove }) => {
       </View>
     </Animated.View>
   );
+};
+
+ListItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    value: PropTypes.any.isRequired, // Adjust type as per the expected data type (e.g., PropTypes.string)
+  }).isRequired,
+  panResponder: PropTypes.object.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  pan: PropTypes.object.isRequired,
+  styles: PropTypes.object.isRequired,
 };
 
 const App = () => {
