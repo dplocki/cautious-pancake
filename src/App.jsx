@@ -4,20 +4,33 @@ import styles from './styles';
 import ListItem from './ListItem';
 
 const App = () => {
-  const [maxQoute, setMaxQoute] = useState('');
+  const [maxQoute, setMaxQoute] = useState(null);
+  const [maxRawQoute, setRawMaxQoute] = useState('');
   const [bottomInputValue, setBottomInputValue] = useState('');
   const [list, setList] = useState([]);
 
+  const isSetUpPhase = () => {
+    return maxQoute !== null;
+  }
+
   const handleMaxQouteSetup = () => {
-    if (maxQoute) {
-      console.log('Top input submitted:', maxQoute);
-      setMaxQoute('');
+    if (!maxRawQoute) {
+      return;
     }
+
+    const transformNumber = +maxRawQoute;
+    if (Number.isNaN(transformNumber)) {
+      return;
+    }
+
+    setMaxQoute(transformNumber);
+    setRawMaxQoute('');
   };
 
   const handleMaxQouteClear = () => {
-    if (!maxQoute) {
-      setMaxQoute('');
+    if (!maxRawQoute) {
+      setRawMaxQoute('');
+      setMaxQoute(null);
     }
   }
 
@@ -37,22 +50,24 @@ const App = () => {
       <View style={styles.maxQouteView}>
         <TextInput
           style={styles.edit}
-          value={maxQoute}
-          onChangeText={setMaxQoute}
+          value={maxRawQoute}
+          onChangeText={setRawMaxQoute}
           keyboardType="numeric"
           placeholder="Enter number"
         />
-        <Button title="Submit" onPress={handleMaxQouteSetup} />
+        {!isSetUpPhase() && <Button title="Submit" onPress={handleMaxQouteSetup} />}
         <Button title="Clear" onPress={handleMaxQouteClear} />
       </View>
 
+      {isSetUpPhase() &&
       <FlatList
         data={list}
         renderItem={({ item }) => <ListItem item={item} onRemove={removeItem} />}
         keyExtractor={item => item.id}
         style={styles.itemList}
-      />
+      />}
 
+      {isSetUpPhase() &&
       <View style={styles.addItemView}>
         <TextInput
           style={styles.edit}
@@ -62,7 +77,7 @@ const App = () => {
           placeholder="Add to list"
         />
         <Button title="Add" onPress={handleBottomSubmit} />
-      </View>
+      </View>}
 
     </View>
   );
