@@ -24,7 +24,7 @@ const App = () => {
     }
 
     setMaxQoute(transformNumber);
-    setRawMaxQoute('');
+    setRawMaxQoute(transformNumber.toString());
   };
 
   const handleMaxQouteClear = () => {
@@ -51,6 +51,7 @@ const App = () => {
         <TextInput
           style={styles.edit}
           value={maxRawQoute}
+          disabled={isSetUpPhase()}
           onChangeText={setRawMaxQoute}
           keyboardType="numeric"
           placeholder="Enter number"
