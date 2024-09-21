@@ -35,10 +35,7 @@ ListItem.propTypes = {
     id: PropTypes.number.isRequired,
     value: PropTypes.any.isRequired,
   }).isRequired,
-  panResponder: PropTypes.object.isRequired,
   onRemove: PropTypes.func.isRequired,
-  pan: PropTypes.object.isRequired,
-  styles: PropTypes.object.isRequired,
 };
 
 export default ListItem;
