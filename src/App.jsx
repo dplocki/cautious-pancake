@@ -7,15 +7,11 @@ import QuoteList from './QuotesList';
 const App = () => {
   const [maxQuote, setMaxQuote] = useState(null);
 
-  const isSetUpPhase = () => {
-    return maxQuote !== null;
-  }
-
   return (
     <View style={styles.styles}>
       <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuote} />
 
-      {isSetUpPhase() && <QuoteList maxQuote={maxQuote} />}
+      {maxQuote !== null && <QuoteList maxQuote={maxQuote} />}
     </View>
   );
 };
