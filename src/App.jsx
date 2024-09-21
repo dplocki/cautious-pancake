@@ -2,36 +2,15 @@ import { useState } from 'react';
 import { View, TextInput, Button, FlatList } from 'react-native';
 import styles from './styles';
 import ListItem from './ListItem';
+import MaxQuoteView from './MaxQuoteView';
 
 const App = () => {
-  const [maxQoute, setMaxQoute] = useState(null);
-  const [maxRawQoute, setRawMaxQoute] = useState('');
+  const [maxQuote, setMaxQuote] = useState(null);
   const [bottomInputValue, setBottomInputValue] = useState('');
   const [list, setList] = useState([]);
 
   const isSetUpPhase = () => {
-    return maxQoute !== null;
-  }
-
-  const handleMaxQouteSetup = () => {
-    if (!maxRawQoute) {
-      return;
-    }
-
-    const transformNumber = +maxRawQoute;
-    if (Number.isNaN(transformNumber)) {
-      return;
-    }
-
-    setMaxQoute(transformNumber);
-    setRawMaxQoute(transformNumber.toString());
-  };
-
-  const handleMaxQouteClear = () => {
-    if (!maxRawQoute) {
-      setRawMaxQoute('');
-      setMaxQoute(null);
-    }
+    return maxQuote !== null;
   }
 
   const handleBottomSubmit = () => {
@@ -47,18 +26,7 @@ const App = () => {
 
   return (
     <View style={styles.styles}>
-      <View style={styles.maxQouteView}>
-        <TextInput
-          style={styles.edit}
-          value={maxRawQoute}
-          disabled={isSetUpPhase()}
-          onChangeText={setRawMaxQoute}
-          keyboardType="numeric"
-          placeholder="Enter number"
-        />
-        {!isSetUpPhase() && <Button title="Submit" onPress={handleMaxQouteSetup} />}
-        <Button title="Clear" onPress={handleMaxQouteClear} />
-      </View>
+      <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuote} />
 
       {isSetUpPhase() &&
       <FlatList
