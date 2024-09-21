@@ -29,25 +29,24 @@ const App = () => {
       <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuote} />
 
       {isSetUpPhase() &&
-      <FlatList
-        data={list}
-        renderItem={({ item }) => <ListItem item={item} onRemove={removeItem} />}
-        keyExtractor={item => item.id}
-        style={styles.itemList}
-      />}
-
-      {isSetUpPhase() &&
-      <View style={styles.addItemView}>
-        <TextInput
-          style={styles.edit}
-          value={bottomInputValue}
-          onChangeText={setBottomInputValue}
-          keyboardType="numeric"
-          placeholder="Add to list"
+      <>
+        <FlatList
+          data={list}
+          renderItem={({ item }) => <ListItem item={item} onRemove={removeItem} />}
+          keyExtractor={item => item.id}
+          style={styles.itemList}
         />
-        <Button title="Add" onPress={handleBottomSubmit} />
-      </View>}
-
+        <View style={styles.addItemView}>
+          <TextInput
+            style={styles.edit}
+            value={bottomInputValue}
+            onChangeText={setBottomInputValue}
+            keyboardType="numeric"
+            placeholder="Add to list"
+          />
+          <Button title="Add" onPress={handleBottomSubmit} />
+        </View>
+      </>}
     </View>
   );
 };
