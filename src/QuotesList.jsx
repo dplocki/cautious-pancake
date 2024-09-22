@@ -7,19 +7,23 @@ const QuoteList = ({ maxQuote }) => {
   const [bottomInputValue, setBottomInputValue] = useState('');
   const [list, setList] = useState([]);
 
-  const handleBottomSubmit = () => {
-    if (bottomInputValue) {
-      setList([...list, {
-        id: Date.now().toString(),
-        value: bottomInputValue,
-        multiplayer: 1,
-        taken: false,
-      }]);
-      setBottomInputValue('');
+  const handleAddItem = () => {
+    if (!bottomInputValue) {
+      return;
     }
-  };
 
-  const removeItem = (id) => {
+    const newList = [...list, {
+      id: Date.now().toString(),
+      value: bottomInputValue,
+      multiplayer: 1,
+      taken: false,
+    }];
+
+    setList(newList);
+    setBottomInputValue('');
+  }
+
+  const handleRemoveItem = (id) => {
     setList(list.filter(item => item.id !== id));
   };
 
@@ -27,7 +31,7 @@ const QuoteList = ({ maxQuote }) => {
     <>
       <FlatList
         data={list}
-        renderItem={({ item }) => <ListItem item={item} onRemove={removeItem} />}
+        renderItem={({ item }) => <ListItem item={item} onRemove={handleRemoveItem} />}
         keyExtractor={item => item.id}
         style={styles.itemList}
       />
@@ -39,7 +43,7 @@ const QuoteList = ({ maxQuote }) => {
           keyboardType="numeric"
           placeholder="Add to list"
         />
-        <Button title="Add" onPress={handleBottomSubmit} />
+        <Button title="Add" onPress={handleAddItem} />
       </View>
     </>
   );
