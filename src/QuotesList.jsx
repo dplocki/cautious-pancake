@@ -12,12 +12,12 @@ const QuoteList = ({ maxQuote }) => {
       return;
     }
 
-    const newList = [...list, {
+    const newList = knapsackProblem([...list, {
       id: Date.now().toString(),
       value: bottomInputValue,
       multiplayer: 1,
       taken: false,
-    }];
+    }]);
 
     setList(newList);
     setBottomInputValue('');
