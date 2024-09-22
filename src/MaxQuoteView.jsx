@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { View, TextInput, Button, Text } from 'react-native';
 import styles from './styles';
 
@@ -39,6 +40,11 @@ const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
       )}
     </View>
   );
+};
+
+MaxQuoteView.propTypes = {
+  maxQuote: PropTypes.number.isRequired,
+  setMaxQuote: PropTypes
 };
 
 export default MaxQuoteView;
