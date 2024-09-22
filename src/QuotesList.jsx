@@ -11,7 +11,9 @@ const QuoteList = ({ maxQuote }) => {
     if (bottomInputValue) {
       setList([...list, {
         id: Date.now().toString(),
-        value: bottomInputValue
+        value: bottomInputValue,
+        multiplayer: 1,
+        taken: false,
       }]);
       setBottomInputValue('');
     }
