@@ -9,7 +9,10 @@ const QuoteList = ({ maxQuote }) => {
 
   const handleBottomSubmit = () => {
     if (bottomInputValue) {
-      setList([...list, { id: Date.now().toString(), value: bottomInputValue }]);
+      setList([...list, {
+        id: Date.now().toString(),
+        value: bottomInputValue
+      }]);
       setBottomInputValue('');
     }
   };
