@@ -17,8 +17,7 @@ const QuoteList = ({ maxQuote }) => {
     const newList = knapsackProblem(maxQuote, [...list, {
       id: Date.now().toString(),
       value: bottomInputValue,
-      multiplayer: 1,
-      taken: false,
+      isSelected: false,
     }]);
 
     setList(newList);
