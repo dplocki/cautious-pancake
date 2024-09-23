@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { View, TextInput, Button, FlatList } from 'react-native';
 import styles from './styles';
 import ListItem from './ListItem';
+import knapsackProblem from './knapsack.problem';
 
 const QuoteList = ({ maxQuote }) => {
   const [bottomInputValue, setBottomInputValue] = useState('');
@@ -12,7 +14,7 @@ const QuoteList = ({ maxQuote }) => {
       return;
     }
 
-    const newList = knapsackProblem([...list, {
+    const newList = knapsackProblem(maxQuote, [...list, {
       id: Date.now().toString(),
       value: bottomInputValue,
       multiplayer: 1,
@@ -47,6 +49,10 @@ const QuoteList = ({ maxQuote }) => {
       </View>
     </>
   );
+};
+
+QuoteList.propTypes = {
+  maxQuote: PropTypes.number.isRequired,
 };
 
 export default QuoteList;

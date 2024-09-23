@@ -1,4 +1,4 @@
-const knapsackProblem = (items) => {
+const knapsackProblem = (maxQuote, items) => {
   return items;
 };
 
