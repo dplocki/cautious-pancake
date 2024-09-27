@@ -23,8 +23,8 @@ const ListItem = ({ item, onRemove }) => {
       style={{ transform: [{ translateX: pan.x }] }}
       {...panResponder.panHandlers}
     >
-      <View style={styles.item}>
-        <Text>{item.value}</Text>
+      <View style={item.isSelected ? styles.itemSelect : styles.item}>
+        <Text>{item.value} PLN</Text>
       </View>
     </Animated.View>
   );
@@ -32,8 +32,9 @@ const ListItem = ({ item, onRemove }) => {
 
 ListItem.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    value: PropTypes.any.isRequired,
+    id: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
+    isSelected: PropTypes.bool.isRequired,
   }).isRequired,
   onRemove: PropTypes.func.isRequired,
 };
