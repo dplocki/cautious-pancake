@@ -15,24 +15,27 @@ const knapsackProblem = (maxQuote, items) => {
    */
   function internal(selectedSum, selected) {
     return items
-      .filter(item => !item.isSelected)
+      .filter(item => !selected.has(item.id))
       .filter(item => item.value + selectedSum <= maxQuote)
-      .map(item => internal(item.value, new Set([...selected, item.id])))
+      .map(item => internal(selectedSum + item.value, new Set([...selected, item.id])))
       .reduce((prev, item) => {
         if (prev[0] >= item[0]) {
           return prev;
         }
 
         return item;
-      });
+      }, [selectedSum, selected]);
   }
 
-  const [resultSum, selected]  = internal(new Set(), 0);
+  const [resultSum, selected]  = internal(0, new Set());
 
-  return items.map(item => ({
-    ...item,
-    isSelected: selected.has(item.id),
-  }));
+  return [
+    resultSum,
+    items.map(item => ({
+      ...item,
+      isSelected: selected.has(item.id),
+    }))
+  ];
 };
 
 export default knapsackProblem;
