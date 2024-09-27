@@ -14,11 +14,14 @@ const QuoteList = ({ maxQuote }) => {
       return;
     }
 
-    const newList = knapsackProblem(maxQuote, [...list, {
-      id: Date.now().toString(),
-      value: bottomInputValue,
-      isSelected: false,
-    }]);
+    const [sumOfAllSelected, newList] = knapsackProblem(maxQuote, [
+      ...list,
+      {
+        id: Date.now().toString(),
+        value: +bottomInputValue,
+        isSelected: false,
+      }
+    ]);
 
     setList(newList);
     setBottomInputValue('');
