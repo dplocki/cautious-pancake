@@ -28,7 +28,8 @@ const QuoteList = ({ maxQuote }) => {
   }
 
   const handleRemoveItem = (id) => {
-    setList(list.filter(item => item.id !== id));
+    const [sumOfAllSelected, newList] = knapsackProblem(maxQuote, list.filter(item => item.id !== id));
+    setList(newList);
   };
 
   return (
