@@ -9,27 +9,22 @@ import {
 } from 'react-native';
 import ListItem from './ListItem';
 import knapsackProblem from './knapsack.problem';
+import NumberInput from './NumberInput';
 
 const QuoteList = ({ maxQuote }) => {
-  const [bottomInputValue, setBottomInputValue] = useState('');
   const [list, setList] = useState([]);
 
-  const handleAddItem = () => {
-    if (!bottomInputValue) {
-      return;
-    }
-
+  const handleAddItem = (value) => {
     const [sumOfAllSelected, newList] = knapsackProblem(maxQuote, [
       ...list,
       {
         id: Date.now().toString(),
-        value: +bottomInputValue,
+        value: +value,
         isSelected: false,
       }
     ]);
 
     setList(newList);
-    setBottomInputValue('');
   }
 
   const handleRemoveItem = (id) => {
@@ -58,16 +53,7 @@ const QuoteList = ({ maxQuote }) => {
         keyExtractor={item => item.id}
         style={styles.itemList}
       />
-      <View style={styles.addItemView}>
-        <TextInput
-          style={styles.edit}
-          value={bottomInputValue}
-          onChangeText={setBottomInputValue}
-          keyboardType="numeric"
-          placeholder="Add to list"
-        />
-        <Button title="Add" onPress={handleAddItem} />
-      </View>
+      <NumberInput onConfirm={handleAddItem} placeholder={"Add to list"} />
     </>
   );
 };
