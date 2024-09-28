@@ -32,11 +32,24 @@ const QuoteList = ({ maxQuote }) => {
     setList(newList);
   };
 
+  const handleCopyItem = (id) => {
+    const [sumOfAllSelected, newList] = knapsackProblem(maxQuote, [
+      ...list,
+      {
+        id: Date.now().toString(),
+        value: list.find(i => i.id === id).value,
+        isSelected: false,
+      }
+    ]);
+
+    setList(newList);
+  }
+
   return (
     <>
       <FlatList
         data={list}
-        renderItem={({ item }) => <ListItem item={item} onRemove={handleRemoveItem} />}
+        renderItem={({ item }) => <ListItem item={item} onRemove={handleRemoveItem} onCopy={handleCopyItem} />}
         keyExtractor={item => item.id}
         style={styles.itemList}
       />
