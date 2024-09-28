@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { View } from 'react-native';
-import styles from './styles';
+import { View, StyleSheet } from 'react-native';
 import MaxQuoteView from './MaxQuoteView';
 import QuoteList from './QuotesList';
 
@@ -15,5 +14,13 @@ const App = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default App;
