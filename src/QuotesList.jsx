@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, TextInput, Button, FlatList } from 'react-native';
-import styles from './styles';
+import {
+  View,
+  TextInput,
+  Button,
+  FlatList,
+  StyleSheet
+} from 'react-native';
 import ListItem from './ListItem';
 import knapsackProblem from './knapsack.problem';
 
@@ -66,6 +71,13 @@ const QuoteList = ({ maxQuote }) => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  edit: { flex: 1, borderWidth: 1, padding: 10 },
+  addItemView: { flexDirection: 'row', marginTop: 20 },
+  itemList: { flex: 1 },
+  edit: { flex: 1, borderWidth: 1, padding: 10 },
+});
 
 QuoteList.propTypes = {
   maxQuote: PropTypes.number.isRequired,
