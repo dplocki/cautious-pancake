@@ -44,7 +44,7 @@ const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
 
 MaxQuoteView.propTypes = {
   maxQuote: PropTypes.number.isRequired,
-  setMaxQuote: PropTypes,
+  setMaxQuote: PropTypes.func.isRequired,
 };
 
 export default MaxQuoteView;
