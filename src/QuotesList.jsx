@@ -46,7 +46,7 @@ const QuoteList = ({ maxQuote }) => {
         renderItem={({ item }) => <ListItem item={item} onRemove={handleRemoveItem} onCopy={handleCopyItem} />}
         keyExtractor={item => item.id}
       />
-      <NumberInput onConfirm={handleAddItem} placeholder={"Add to list"} />
+      <NumberInput onConfirm={handleAddItem} placeholder="Add to list" buttonText="Add" />
     </>
   );
 };

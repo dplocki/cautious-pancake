@@ -7,7 +7,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-const NumberInput = ({ placeholder, onConfirm }) => {
+const NumberInput = ({ placeholder, onConfirm, buttonText }) => {
   const [rawInputValue, setRawInputValue] = useState('');
 
   const handleSubmit = () => {
@@ -28,7 +28,7 @@ const NumberInput = ({ placeholder, onConfirm }) => {
         keyboardType="numeric"
         placeholder={placeholder}
       />
-      <Button title="Add" onPress={handleSubmit} />
+      <Button title={buttonText} onPress={handleSubmit} />
     </View>)
 };
 
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
 
 NumberInput.propTypes = {
   placeholder: PropTypes.string,
+  buttonText: PropTypes.string.isRequired,
   onConfirm: PropTypes.func.isRequired,
 };
 

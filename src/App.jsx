@@ -7,7 +7,7 @@ const App = () => {
   const [maxQuote, setMaxQuote] = useState(null);
 
   return (
-    <View style={styles.styles}>
+    <View style={styles.mainView}>
       <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuote} />
 
       {maxQuote !== null && <QuoteList maxQuote={maxQuote} />}

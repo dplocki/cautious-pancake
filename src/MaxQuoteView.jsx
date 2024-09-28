@@ -1,17 +1,12 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput, Button, Text } from 'react-native';
 import styles from './styles';
+import NumberInput from './NumberInput';
 
 const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
-  const [rawMaxQuote, setRawMaxQuote] = useState('');
 
-  const handleMaxQuoteSetup = () => {
-    const number = Number(rawMaxQuote);
-    if (rawMaxQuote && !isNaN(number)) {
-      setMaxQuote(number);
-      setRawMaxQuote(number.toString());
-    }
+  const handleMaxQuoteSetup = (value) => {
+    setMaxQuote(value);
   };
 
   const handleMaxQuoteClear = () => {
@@ -22,16 +17,7 @@ const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
   return (
     <View style={styles.maxQuoteView}>
       {maxQuote === null ? (
-        <>
-          <TextInput
-            style={styles.edit}
-            value={rawMaxQuote}
-            onChangeText={setRawMaxQuote}
-            keyboardType="numeric"
-            placeholder="Enter number"
-          />
-          <Button title="Submit" onPress={handleMaxQuoteSetup} />
-        </>
+        <NumberInput buttonText="Add" placeholder="Enter maximum qoute" onConfirm={handleMaxQuoteSetup} />
       ) : (
         <>
           <Text>{maxQuote}</Text>
