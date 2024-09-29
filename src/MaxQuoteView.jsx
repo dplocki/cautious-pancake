@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { View, TextInput, Button, Text } from 'react-native';
-import styles from './styles';
+import { View, Button, Text, StyleSheet } from 'react-native';
 import NumberInput from './NumberInput';
 
 const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
@@ -27,6 +26,10 @@ const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+	maxQuoteView: { flexDirection: 'row', marginBottom: 20 },
+});
 
 MaxQuoteView.propTypes = {
   maxQuote: PropTypes.number.isRequired,
