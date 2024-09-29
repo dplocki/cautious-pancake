@@ -13,12 +13,12 @@ const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
   };
 
   return (
-    <View style={styles.maxQuoteView}>
+    <View style={styles.container}>
       {maxQuote === null ? (
         <NumberInput buttonText="Add" placeholder="Enter maximum qoute" onConfirm={handleMaxQuoteSetup} />
       ) : (
         <>
-          <Text>{maxQuote}</Text>
+          <Text style={styles.text}>{maxQuote}</Text>
           <Button title="Clear" onPress={handleMaxQuoteClear} />
         </>
       )}
@@ -27,7 +27,17 @@ const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
 };
 
 const styles = StyleSheet.create({
-	maxQuoteView: { flexDirection: 'row', marginBottom: 20 },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  text: {
+    flex: 1,
+    fontSize: 16,
+  },
 });
 
 MaxQuoteView.propTypes = {
