@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, Animated, PanResponder } from 'react-native';
-import styles from './styles';
+import { View, Text, Animated, PanResponder, StyleSheet } from 'react-native';
 
 const ListItem = ({ item, onRemove, onCopy }) => {
   const pan = useState(new Animated.ValueXY())[0];
@@ -31,6 +30,11 @@ const ListItem = ({ item, onRemove, onCopy }) => {
     </Animated.View>
   );
 };
+
+const styles = StyleSheet.create({
+	item: { padding: 20, backgroundColor: '#f0f0f0', marginVertical: 5 },
+	itemSelect: { padding: 20, backgroundColor: '#5b81ae', marginVertical: 5 },
+});
 
 ListItem.propTypes = {
   item: PropTypes.shape({
