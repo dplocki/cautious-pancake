@@ -9,7 +9,6 @@ const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
   };
 
   const handleMaxQuoteClear = () => {
-    setRawMaxQuote('');
     setMaxQuote(null);
   };
 
