@@ -18,7 +18,7 @@ const MaxQuoteView = ({ maxQuote, setMaxQuote }) => {
         <NumberInput buttonText="Add" placeholder="Enter maximum qoute" onConfirm={handleMaxQuoteSetup} />
       ) : (
         <>
-          <Text style={styles.text}>{maxQuote}</Text>
+          <Text style={styles.text}>{`${maxQuote} PLN`}</Text>
           <Button title="Clear" onPress={handleMaxQuoteClear} />
         </>
       )}
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     fontSize: 16,
+    textAlign: 'center',
   },
 });
 
