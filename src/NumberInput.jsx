@@ -33,8 +33,16 @@ const NumberInput = ({ placeholder, onConfirm, buttonText }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flexDirection: 'row', marginTop: 20 },
-  textInput: { flex: 1, borderWidth: 1, padding: 10 },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 20,
+  },
+  textInput: {
+    flex: 1,
+    borderWidth: 1,
+    padding: 10
+  },
 });
 
 NumberInput.propTypes = {
