@@ -42,8 +42,9 @@ const QuoteList = ({ maxQuote }) => {
   return (
     <View style={styles.container}>
       <FlatList
+        style={styles.list}
         data={list}
-        renderItem={({ item }) => <ListItem item={item} onRemove={handleRemoveItem} onCopy={handleCopyItem} />}
+        renderItem={({ item }) => <ListItem style={styles.item} item={item} onRemove={handleRemoveItem} onCopy={handleCopyItem} />}
         keyExtractor={item => item.id}
       />
       <NumberInput onConfirm={handleAddItem} placeholder="Add to list" buttonText="Add" />
@@ -59,6 +60,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
   },
+  list: {
+    width: '100%',
+  }
 });
 
 QuoteList.propTypes = {
