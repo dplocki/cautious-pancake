@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import ListItem from './ListItem';
 import knapsackProblem from './knapsack.problem';
 import NumberInput from './NumberInput';
@@ -40,16 +40,26 @@ const QuoteList = ({ maxQuote }) => {
   }
 
   return (
-    <>
+    <View style={styles.container}>
       <FlatList
         data={list}
         renderItem={({ item }) => <ListItem item={item} onRemove={handleRemoveItem} onCopy={handleCopyItem} />}
         keyExtractor={item => item.id}
       />
       <NumberInput onConfirm={handleAddItem} placeholder="Add to list" buttonText="Add" />
-    </>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+});
 
 QuoteList.propTypes = {
   maxQuote: PropTypes.number.isRequired,
