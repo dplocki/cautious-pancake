@@ -25,15 +25,30 @@ const ListItem = ({ item, onRemove, onCopy }) => {
       {...panResponder.panHandlers}
     >
       <View style={item.isSelected ? styles.itemSelect : styles.item}>
-        <Text>{item.value} PLN</Text>
+        <Text style={styles.itemText}>{item.value} PLN</Text>
       </View>
     </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
-	item: { padding: 20, backgroundColor: '#f0f0f0', marginVertical: 5 },
-	itemSelect: { padding: 20, backgroundColor: '#5b81ae', marginVertical: 5 },
+	item: {
+    padding: 10,
+    backgroundColor: '#f0f0f0',
+    marginVertical: 5,
+    borderRadius: 20,
+    margin: 10,
+  },
+	itemSelect: {
+    padding: 10,
+    backgroundColor: '#5b81ae',
+    marginVertical: 5,
+    borderRadius: 20,
+    margin: 10,
+  },
+  itemText: {
+    paddingLeft: 20,
+  }
 });
 
 ListItem.propTypes = {
