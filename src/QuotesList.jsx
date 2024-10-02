@@ -40,7 +40,7 @@ const QuoteList = ({ maxQuote }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <>
       <FlatList
         style={styles.list}
         data={list}
@@ -48,20 +48,15 @@ const QuoteList = ({ maxQuote }) => {
         keyExtractor={item => item.id}
       />
       <NumberInput onConfirm={handleAddItem} placeholder="Add to list" buttonText="Add" />
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
   list: {
+    flex: 1,
     width: '100%',
+    alignSelf: 'stretch',
   }
 });
 
