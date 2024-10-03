@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import ListItem from './ListItem';
 import knapsackProblem from './knapsack.problem';
 import NumberInput from './NumberInput';
