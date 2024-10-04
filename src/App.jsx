@@ -5,12 +5,13 @@ import QuoteList from './QuotesList';
 
 const App = () => {
   const [maxQuote, setMaxQuote] = useState(null);
+  const [list, setList] = useState([]);
 
   return (
     <View style={styles.mainView}>
       <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuote} />
 
-      {maxQuote !== null && <QuoteList maxQuote={maxQuote} />}
+      {maxQuote !== null && <QuoteList maxQuote={maxQuote} list={list} setList={setList} />}
     </View>
   );
 };

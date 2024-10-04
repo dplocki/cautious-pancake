@@ -5,11 +5,10 @@ import ListItem from './ListItem';
 import knapsackProblem from './knapsack.problem';
 import NumberInput from './NumberInput';
 
-const QuoteList = ({ maxQuote }) => {
-  const [list, setList] = useState([]);
+const QuoteList = ({ maxQuote, list, setList }) => {
 
   const handleAddItem = (value) => {
-    const [sumOfAllSelected, newList] = knapsackProblem(maxQuote, [
+    const [_, newList] = knapsackProblem(maxQuote, [
       ...list,
       {
         id: Date.now().toString(),
@@ -22,12 +21,12 @@ const QuoteList = ({ maxQuote }) => {
   }
 
   const handleRemoveItem = (id) => {
-    const [sumOfAllSelected, newList] = knapsackProblem(maxQuote, list.filter(item => item.id !== id));
+    const [_, newList] = knapsackProblem(maxQuote, list.filter(item => item.id !== id));
     setList(newList);
   };
 
   const handleCopyItem = (id) => {
-    const [sumOfAllSelected, newList] = knapsackProblem(maxQuote, [
+    const [_, newList] = knapsackProblem(maxQuote, [
       ...list,
       {
         id: Date.now().toString(),
