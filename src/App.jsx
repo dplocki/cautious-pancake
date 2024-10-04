@@ -7,9 +7,13 @@ const App = () => {
   const [maxQuote, setMaxQuote] = useState(null);
   const [list, setList] = useState([]);
 
+  const sumOfAllSelected = list
+    .filter(item => item.isSelected)
+    .reduce((p, item) => p + item.value, 0);
+
   return (
     <View style={styles.mainView}>
-      <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuote} />
+      <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuote} sumOfAllSelected={sumOfAllSelected} />
 
       {maxQuote !== null && <QuoteList maxQuote={maxQuote} list={list} setList={setList} />}
     </View>
