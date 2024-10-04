@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 });
 
 QuoteList.propTypes = {
-  list: PropTypes.array({
+  list: PropTypes.arrayOf({
     id: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
     isSelected: PropTypes.bool.isRequired,
