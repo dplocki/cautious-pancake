@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, StyleSheet } from 'react-native';
 import ListItem from './ListItem';
@@ -60,7 +59,13 @@ const styles = StyleSheet.create({
 });
 
 QuoteList.propTypes = {
+  list: PropTypes.array({
+    id: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
+    isSelected: PropTypes.bool.isRequired,
+  }).isRequired,
   maxQuote: PropTypes.number.isRequired,
+  setList: PropTypes.func.isRequired,
 };
 
 export default QuoteList;
