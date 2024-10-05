@@ -11,9 +11,17 @@ const App = () => {
     .filter(item => item.isSelected)
     .reduce((p, item) => p + item.value, 0);
 
+  function setMaxQuoteWrapper(value) {
+    if (value === null) {
+      setList([]);
+    }
+
+    setMaxQuote(value);
+  }
+
   return (
     <View style={styles.mainView}>
-      <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuote} sumOfAllSelected={sumOfAllSelected} />
+      <MaxQuoteView maxQuote={maxQuote} setMaxQuote={setMaxQuoteWrapper} sumOfAllSelected={sumOfAllSelected} />
 
       {maxQuote !== null && <QuoteList maxQuote={maxQuote} list={list} setList={setList} />}
     </View>
