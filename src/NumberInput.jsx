@@ -34,7 +34,6 @@ const NumberInput = ({ placeholder, onConfirm, buttonText }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     marginTop: 20,
     alignItems: 'center',
