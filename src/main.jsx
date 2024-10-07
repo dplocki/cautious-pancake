@@ -4,13 +4,19 @@ import App from './App.jsx'
 import './index.css'
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js').then(registration => {
-      console.log('Service Worker registered with scope:', registration.scope);
-    }).catch(error => {
-      console.log('Service Worker registration failed:', error);
+  navigator.serviceWorker.register("/service-worker.js", { scope: "/" })
+    .then(registration => {
+      if (registration.installing) {
+        console.log("Service worker installing");
+      } else if (registration.waiting) {
+        console.log("Service worker installed");
+      } else if (registration.active) {
+        console.log("Service worker active");
+      }
+    })
+    .catch(error => {
+      console.error(`Registration failed with ${error}`);
     });
-  });
 }
 
 createRoot(document.getElementById('root')).render(
