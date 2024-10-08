@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 });
 
 MaxQuoteView.propTypes = {
-  maxQuote: PropTypes.number.isRequired,
+  maxQuote: PropTypes.number,
   sumOfAllSelected: PropTypes.number.isRequired,
   setMaxQuote: PropTypes.func.isRequired,
 };
