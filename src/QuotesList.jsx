@@ -59,11 +59,11 @@ const styles = StyleSheet.create({
 });
 
 QuoteList.propTypes = {
-  list: PropTypes.arrayOf({
+  list: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
     isSelected: PropTypes.bool.isRequired,
-  }).isRequired,
+  })).isRequired,
   maxQuote: PropTypes.number.isRequired,
   setList: PropTypes.func.isRequired,
 };
