@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register("service-worker.js", { scope: "/" })
+  navigator.serviceWorker.register("/service-worker.js", { scope: "/" })
     .then(registration => {
       if (registration.installing) {
         console.log("Service worker installing");
