@@ -1,20 +1,22 @@
 {
-    "name": "Cautious Pancake",
-    "short_name": "Cautious Pancake",
-    "icons": [
-       {
-          "src": "/android-chrome-192x192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-       },
-       {
-        "src": "/android-chrome-512x512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-        }
-    ],
-    "start_url": ".",
-    "theme_color": "#FFFFFF",
-    "background_color": "#FFFFFF",
-    "display": "standalone"
- }
+   "background_color": "#FFFFFF",
+   "description": "An pancake and the cautious one",
+   "display": "standalone",
+   "icons": [
+      {
+         "src": "/android-chrome-192x192.png",
+         "sizes": "192x192",
+         "type": "image/png"
+      },
+      {
+         "src": "/android-chrome-512x512.png",
+         "sizes": "512x512",
+         "type": "image/png"
+      }
+   ],
+   "name": "Cautious Pancake",
+   "short_name": "Cautious Pancake",
+   "scope": "/",
+   "start_url": "https://cautious-pancake.wuaze.com/",
+   "theme_color": "#FFFFFF"
+}
