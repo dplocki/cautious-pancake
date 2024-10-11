@@ -15,8 +15,8 @@
       }
    ],
    "name": "Cautious Pancake",
+   "scope": ".",
    "short_name": "Cautious Pancake",
-   "scope": "/",
-   "start_url": "https://cautious-pancake.wuaze.com/",
+   "start_url": "./",
    "theme_color": "#FFFFFF"
 }
