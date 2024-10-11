@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { SafeAreaView } from 'react-native-web';
 import App from './App.jsx'
 import './index.css'
 
@@ -21,6 +22,8 @@ if ('serviceWorker' in navigator) {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <SafeAreaView>
+      <App />
+    </SafeAreaView>
   </StrictMode>,
 );
