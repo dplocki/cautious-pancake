@@ -36,7 +36,27 @@ export default defineConfig({
         "short_name": "Cautious Pancake",
         "start_url": "./",
         "theme_color": "#FFFFFF"
-      }
+      },
+      filename: 'service-worker.js',
+      injectRegister: false,
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: ({ request }) => {
+              return request.destination === 'document'
+                || request.destination === 'image'
+                || request.destination === 'script'
+                || request.destination === 'style';
+            },
+            handler: 'CacheOnly',
+            options: {
+              cacheName: 'html-cache',
+            },
+          },
+        ],
+        skipWaiting: true,
+        clientsClaim: true,
+      },
     }),
   ],
   resolve: {
