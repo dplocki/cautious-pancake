@@ -2,22 +2,8 @@ import PropTypes from 'prop-types';
 import { FlatList, StyleSheet } from 'react-native';
 import ListItem from './ListItem';
 import knapsackProblem from './knapsack.problem';
-import NumberInput from './NumberInput';
 
 const QuoteList = ({ maxQuote, list, setList }) => {
-
-  const handleAddItem = (value) => {
-    const [_, newList] = knapsackProblem(maxQuote, [
-      ...list,
-      {
-        id: Date.now().toString(),
-        value: +value,
-        isSelected: false,
-      }
-    ]);
-
-    setList(newList);
-  }
 
   const handleRemoveItem = (id) => {
     const [_, newList] = knapsackProblem(maxQuote, list.filter(item => item.id !== id));
@@ -38,15 +24,12 @@ const QuoteList = ({ maxQuote, list, setList }) => {
   }
 
   return (
-    <>
-      <FlatList
-        style={styles.list}
-        data={list}
-        renderItem={({ item }) => <ListItem style={styles.item} item={item} onRemove={handleRemoveItem} onCopy={handleCopyItem} />}
-        keyExtractor={item => item.id}
-      />
-      <NumberInput onConfirm={handleAddItem} placeholder="Add to list" buttonText="Add" />
-    </>
+    <FlatList
+      style={styles.list}
+      data={list}
+      renderItem={({ item }) => <ListItem style={styles.item} item={item} onRemove={handleRemoveItem} onCopy={handleCopyItem} />}
+      keyExtractor={item => item.id}
+    />
   );
 };
 
