@@ -25,7 +25,7 @@ const NumberInput = ({ placeholder, onConfirm, buttonText }) => {
         style={styles.textInput}
         value={rawInputValue}
         onChangeText={setRawInputValue}
-        keyboardType="numeric"
+        inputMode="numeric"
         placeholder={placeholder}
       />
       <Button title={buttonText} onPress={handleSubmit} />
