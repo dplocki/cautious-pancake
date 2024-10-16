@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { View, Text, Animated, PanResponder, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const ListItem = ({ item, onRemove, onCopy }) => {
   const pan = useState(new Animated.ValueXY())[0];
@@ -18,9 +18,9 @@ const ListItem = ({ item, onRemove, onCopy }) => {
         onRemove(item.id);
       } else if (Math.abs(gestureState.dy) > 120) {
         onCopy(item.id);
-      } else {
-        returnToOriginalPosition();
       }
+
+      returnToOriginalPosition();
     },
   });
 
