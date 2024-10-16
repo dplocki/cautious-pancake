@@ -4,17 +4,22 @@ import { View, Text, Animated, PanResponder, StyleSheet } from 'react-native';
 
 const ListItem = ({ item, onRemove, onCopy }) => {
   const pan = useState(new Animated.ValueXY())[0];
+  const returnToOriginalPosition = () => Animated.spring(pan, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
 
   const panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: () => true,
     onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], { useNativeDriver: false }),
+    onPanResponderReject: returnToOriginalPosition,
+    onPanResponderTerminate: returnToOriginalPosition,
+    onPanResponderTerminationRequest: returnToOriginalPosition,
+    onPanResponderEnd: returnToOriginalPosition,
     onPanResponderRelease: (e, gestureState) => {
       if (Math.abs(gestureState.dx) > 120) {
         onRemove(item.id);
-      } else if (Math.abs(gestureState.dy) > 30) {
+      } else if (Math.abs(gestureState.dy) > 120) {
         onCopy(item.id);
       } else {
-        Animated.spring(pan, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
+        returnToOriginalPosition();
       }
     },
   });
