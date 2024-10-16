@@ -1,3 +1,4 @@
+import { expect, test } from '@jest/globals';
 import knapsackProblem from "../src/knapsack.problem";
 
 function transformArrayIntoItemArray(values) {
