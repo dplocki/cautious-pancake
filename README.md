@@ -9,6 +9,16 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [vite-plugin-pwa](https://vite-pwa-org.netlify.app/) for generating **manifest** and **service worker**
 
+### Notes
+
+If case of using animations from React Native, you need add fallowing into [`vite.config.js`](./vite.config.js):
+
+```js
+  define: {
+    global: "window",
+  },
+```
+
 ## Docker run
 
 Build the image:
