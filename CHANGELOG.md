@@ -17,4 +17,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- N/A
+
+
+## [1.0.0] - 2024.10.18
+
+### Added
+
+- Selecting the correct set of articles for given maxium qoute
+
+### Changed
+
 - N/A (First release)
+
+### Removed
+
+- N/A (First release)
+
+[unreleased]: https://github.com/dplocki/cautious-pancake/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/dplocki/cautious-pancake/releases/tag/v1.0.0
