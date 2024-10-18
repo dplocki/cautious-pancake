@@ -24,11 +24,17 @@ const App = () => {
   };
 
   const handleAddItem = (value) => {
+    const number = +value;
+
+    if (!number) {
+      return;
+    }
+
     const [_, newList] = knapsackProblem(maxQuote, [
       ...list,
       {
         id: Date.now().toString(),
-        value: +value,
+        value: number,
         isSelected: false,
       }
     ]);
