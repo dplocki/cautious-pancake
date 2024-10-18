@@ -5,7 +5,7 @@ import NumberInput from './NumberInput';
 const MaxQuoteView = ({ maxQuote, setMaxQuote, sumOfAllSelected }) => {
 
   const handleMaxQuoteSetup = (value) => {
-    setMaxQuote(value);
+    setMaxQuote(+value);
   };
 
   const handleMaxQuoteClear = () => {

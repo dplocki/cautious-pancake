@@ -14,8 +14,10 @@ const App = () => {
     .reduce((p, item) => p + item.value, 0);
 
   const setMaxQuoteWrapper = (value) => {
-    if (value === null) {
+    if (!value) {
       setList([]);
+      setMaxQuote(null);
+      return;
     }
 
     setMaxQuote(value);
