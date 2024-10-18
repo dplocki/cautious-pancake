@@ -27,6 +27,7 @@ const NumberInput = ({ placeholder, onConfirm, buttonText }) => {
         onChangeText={setRawInputValue}
         inputMode="numeric"
         placeholder={placeholder}
+        onSubmitEditing={handleSubmit}
       />
       <Button title={buttonText} onPress={handleSubmit} />
     </View>)
